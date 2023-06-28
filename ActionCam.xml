@@ -29,21 +29,27 @@
             </Anchor>
           </Anchors>
         </FontString>
-        <FontString name="$parentActionAngleText" text="Camera Angle" inherits="GameFontNormal" justifyH="CENTER" justifyV="TOP">
-          <Anchors>
-            <Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
-              <Offset>
-                <AbsDimension x="25" y="-8"/>
-              </Offset>
-            </Anchor>
-          </Anchors>
-        </FontString>
       </Layer>
     </Layers>
     <Frames>
+      <CheckButton name="$parentActionCam" inherits="InterfaceOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
+            <Offset x="0" y="-6"/>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.type = CONTROLTYPE_CHECKBOX;
+            self.cvar = "ActionCam";
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+        </Scripts>
+      </CheckButton>
+      
       <Slider name="$parentActionAngle" inherits="OptionsSliderTemplate">
         <Anchors>
-          <Anchor point="TOPLEFT" relativeTo="$parentActionAngleText" relativePoint="BOTTOMLEFT" x="-20" y="-4"/>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionCam" relativePoint="BOTTOMLEFT" x="0" y="-30"/>
         </Anchors>
         <Layers>
           <Layer level="ARTWORK">
@@ -218,7 +224,7 @@
       <CheckButton name="$parentCameraFocusInteract" inherits="InterfaceOptionsCheckButtonTemplate">
         <Anchors>
           <Anchor point="TOPLEFT" relativeTo="$parentActionMaxPitch" relativePoint="BOTTOMLEFT">
-            <Offset x="0" y="-18"/>
+            <Offset x="0" y="-26"/>
           </Anchor>
         </Anchors>
         <Scripts>
@@ -232,7 +238,7 @@
       <CheckButton name="$parentCameraFocusEnemy" inherits="InterfaceOptionsCheckButtonTemplate">
         <Anchors>
           <Anchor point="TOPLEFT" relativeTo="$parentCameraFocusInteract" relativePoint="BOTTOMLEFT">
-            <Offset x="0" y="-18"/>
+            <Offset x="0" y="-10"/>
           </Anchor>
         </Anchors>
         <Scripts>

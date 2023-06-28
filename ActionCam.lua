@@ -8,8 +8,8 @@ local defaults = {
     cameraActionDistMin = 0.0,
     cameraActionDistMax = 10.00,
 	cameraActionZ = 0.05,
-    cameraActionZMin = 0.0,
-    cameraActionZMax = 5.00,
+    cameraActionZMin = -1.25,
+    cameraActionZMax = 0.75,
 	cameraActionMaxPitch = 0.20,
     cameraActionMaxPitchMin = 0.0,
     cameraActionMaxPitchMax = 1.55,
@@ -26,6 +26,7 @@ RegisterCVar("AC_CameraMinPitch", defaults.cameraActionMinPitch)
 
 -- @robinsch: Option Panel
 ActionCamPanelOptions = {
+	ActionCam = { text = "Enable Action Camera" },
     AC_CameraAngle = { text = "Camera Angle", minValue = defaults.cameraActionAngle, minValue = defaults.cameraActionAngleMin, maxValue = defaults.cameraActionAngleMax, valueStep = 0.0025, },
 	AC_CameraDist = { text = "Camera Distance", minValue = defaults.cameraActionDist, minValue = defaults.cameraActionDistMin, maxValue = defaults.cameraActionDistMax, valueStep = 0.0025, },
 	AC_CameraZ = { text = "Camera Height", minValue = defaults.cameraActionZ, minValue = defaults.cameraActionZMin, maxValue = defaults.cameraActionZMax, valueStep = 0.0025, },
