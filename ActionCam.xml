@@ -152,6 +152,41 @@
         </Scripts>
       </Slider>
 
+      <Slider name="$parentTargetFocusTurnSpeed" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionZ" relativePoint="TOPRIGHT" x="26" y="0"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Low")
+            local high = _G[self:GetName().."High"]
+            high:SetText("High")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraTargetFocusTurnSpeed";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+
       <Slider name="$parentActionMaxPitch" inherits="OptionsSliderTemplate">
         <Anchors>
           <Anchor point="TOPLEFT" relativeTo="$parentActionZ" relativePoint="BOTTOMLEFT" x="0" y="-30"/>

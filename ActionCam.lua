@@ -16,6 +16,9 @@ local defaults = {
 	cameraActionMinPitch = -0.05,
     cameraActionMinPitchMin = -1.55,
     cameraActionMinPitchMax = 0,
+	cameraTargetFocusTurnSpeed = 3.15,
+	cameraTargetFocusTurnSpeedMin = 0.5,
+	cameraTargetFocusTurnSpeedMax = 16.5,
 }
 
 RegisterCVar("AC_CameraAngle", defaults.cameraActionAngle)
@@ -23,6 +26,7 @@ RegisterCVar("AC_CameraDist", defaults.cameraActionDist)
 RegisterCVar("AC_CameraZ", defaults.cameraActionZ)
 RegisterCVar("AC_CameraMaxPitch", defaults.cameraActionMaxPitch)
 RegisterCVar("AC_CameraMinPitch", defaults.cameraActionMinPitch)
+RegisterCVar("AC_CameraTargetFocusTurnSpeed", defaults.cameraActionMinPitch)
 
 -- @robinsch: Option Panel
 ActionCamPanelOptions = {
@@ -32,6 +36,8 @@ ActionCamPanelOptions = {
 	AC_CameraZ = { text = "Camera Height", minValue = defaults.cameraActionZ, minValue = defaults.cameraActionZMin, maxValue = defaults.cameraActionZMax, valueStep = 0.0025, },
 	AC_CameraMaxPitch = { text = "Camera Floor Pitch", minValue = defaults.cameraActionMaxPitch, minValue = defaults.cameraActionMaxPitchMin, maxValue = defaults.cameraActionMaxPitchMax, valueStep = 0.0025, },
 	AC_CameraMinPitch = { text = "Camera Ceiling Pitch", minValue = defaults.cameraActionMinPitch, minValue = defaults.cameraActionMinPitchMin, maxValue = defaults.cameraActionMinPitchMax, valueStep = 0.0025, },
+	AC_CameraTargetFocusTurnSpeed = { text = "Camera Turn Speed", minValue = defaults.cameraTargetFocusTurnSpeed, minValue = defaults.cameraTargetFocusTurnSpeedMin, maxValue = defaults.cameraTargetFocusTurnSpeedMax, valueStep = 0.0025, },
+	
 	cameraTargetFocusInteractEnable = { text = "Focus Interact" },
 	cameraTargetFocusEnemyEnable = { text = "Focus Enemy" },
 	cameraActionHeadBobs = { text = "Camera Bob" },
@@ -50,6 +56,8 @@ function ActionCamOptions_UpdateSettings(cvar, value)
 		SetCVar("cameraActionMaxPitch", ActionCamOptionsDB["AC_CameraMaxPitch"])
 	elseif cvar == "AC_CameraMinPitch" then
 		SetCVar("cameraActionMinPitch", ActionCamOptionsDB["AC_CameraMinPitch"])
+	elseif cvar == "AC_CameraTargetFocusTurnSpeed" then
+		SetCVar("cameraTargetFocusTurnSpeed", ActionCamOptionsDB["AC_CameraTargetFocusTurnSpeed"])
 	end
 end
 
@@ -71,6 +79,7 @@ function ActionCamOptions_OnEvent(self, event, ...)
 				AC_CameraZ = defaults.cameraActionZ,
 				AC_CameraMaxPitch = defaults.cameraMaxPitch,
 				AC_CameraMinPitch = defaults.cameraMinPitch,
+				AC_CameraTargetFocusTurnSpeed = defaults.cameraTargetFocusTurnSpeed,
 			}
 		end
 	end
