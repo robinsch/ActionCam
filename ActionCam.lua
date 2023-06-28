@@ -34,6 +34,7 @@ ActionCamPanelOptions = {
 	AC_CameraMinPitch = { text = "Camera Ceiling Pitch", minValue = defaults.cameraActionMinPitch, minValue = defaults.cameraActionMinPitchMin, maxValue = defaults.cameraActionMinPitchMax, valueStep = 0.0025, },
 	cameraTargetFocusInteractEnable = { text = "Focus Interact" },
 	cameraTargetFocusEnemyEnable = { text = "Focus Enemy" },
+	cameraActionHeadBobs = { text = "Camera Bob" },
 }
 
 function ActionCamOptions_UpdateSettings(cvar, value)

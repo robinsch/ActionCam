@@ -249,6 +249,20 @@
           </OnLoad>
         </Scripts>
       </CheckButton>
+      <CheckButton name="$parentCameraBob" inherits="InterfaceOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentCameraFocusEnemy" relativePoint="BOTTOMLEFT">
+            <Offset x="0" y="-10"/>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.type = CONTROLTYPE_CHECKBOX;
+            self.cvar = "cameraActionHeadBobs";
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+        </Scripts>
+      </CheckButton>
     </Frames>
     <Scripts>
       <OnLoad function="ActionCamOptions_OnLoad"/>
