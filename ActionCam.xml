@@ -1,0 +1,252 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ http://wowprogramming.com/FrameXML/UI.xsd">
+
+  <Frame name="ActionCamOptions" hidden="true" parent="InterfaceOptionsFramePanelContainer">
+    <Layers>
+      <Layer level="ARTWORK">
+        <FontString name="$parentTitle" text="Action Camera" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="16" y="-16"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentSubText" text="These options allow you to control various action camera settings." inherits="GameFontHighlightSmall" nonspacewrap="true" maxLines="3" justifyH="LEFT" justifyV="TOP">
+          <Size>
+            <AbsDimension y="32" x="0"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+              <Offset>
+                <AbsDimension x="0" y="-8"/>
+              </Offset>
+            </Anchor>
+            <Anchor point="RIGHT">
+              <Offset>
+                <AbsDimension x="-32" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentActionAngleText" text="Camera Angle" inherits="GameFontNormal" justifyH="CENTER" justifyV="TOP">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parentSubText" relativePoint="BOTTOMLEFT">
+              <Offset>
+                <AbsDimension x="25" y="-8"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Slider name="$parentActionAngle" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionAngleText" relativePoint="BOTTOMLEFT" x="-20" y="-4"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Left")
+            local high = _G[self:GetName().."High"]
+            high:SetText("Right")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraAngle";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+
+      <Slider name="$parentActionDist" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionAngle" relativePoint="TOPRIGHT" x="26" y="0"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Low")
+            local high = _G[self:GetName().."High"]
+            high:SetText("High")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraDist";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+
+      <Slider name="$parentActionZ" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionAngle" relativePoint="BOTTOMLEFT" x="0" y="-30"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Low")
+            local high = _G[self:GetName().."High"]
+            high:SetText("High")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraZ";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+
+      <Slider name="$parentActionMaxPitch" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionZ" relativePoint="BOTTOMLEFT" x="0" y="-30"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Low")
+            local high = _G[self:GetName().."High"]
+            high:SetText("High")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraMaxPitch";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+
+      <Slider name="$parentActionMinPitch" inherits="OptionsSliderTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionMaxPitch" relativePoint="TOPRIGHT" x="26" y="0"/>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="$parentCurrent" parentKey="Current" inherits="GameFontNormalSmall">
+              <Anchors>
+                <Anchor point="TOP" relativePoint="BOTTOM" x="0" y="-2"/>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Scripts>
+          <OnLoad>
+            local low = _G[self:GetName().."Low"]
+            low:SetText("Low")
+            local high = _G[self:GetName().."High"]
+            high:SetText("High")
+            self.type = CONTROLTYPE_SLIDER;
+            self.cvar = "AC_CameraMinPitch";
+            self.SetDisplayValue = self.SetValue;
+            self.SetValue = function (self, value)
+            BlizzardOptionsPanel_SetCVarSafe(self.cvar, value);
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+            end
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+          <OnValueChanged>
+            self.newValue = value;
+            ActionCamOptions_UpdateSettings(self.cvar, value)
+          </OnValueChanged>
+        </Scripts>
+      </Slider>
+      <CheckButton name="$parentCameraFocusInteract" inherits="InterfaceOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionMaxPitch" relativePoint="BOTTOMLEFT">
+            <Offset x="0" y="-18"/>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.type = CONTROLTYPE_CHECKBOX;
+            self.cvar = "cameraTargetFocusInteractEnable";
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+        </Scripts>
+      </CheckButton>
+      <CheckButton name="$parentCameraFocusEnemy" inherits="InterfaceOptionsCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentCameraFocusInteract" relativePoint="BOTTOMLEFT">
+            <Offset x="0" y="-18"/>
+          </Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self.type = CONTROLTYPE_CHECKBOX;
+            self.cvar = "cameraTargetFocusEnemyEnable";
+            BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+          </OnLoad>
+        </Scripts>
+      </CheckButton>
+    </Frames>
+    <Scripts>
+      <OnLoad function="ActionCamOptions_OnLoad"/>
+      <OnEvent function="ActionCamOptions_OnEvent"/>
+    </Scripts>
+  </Frame>
+</Ui>

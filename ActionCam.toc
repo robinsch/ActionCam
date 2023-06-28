@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: ActionCam
+## Author: robinsch
+## Notes: ActionCam support for 3.3.5
+## SavedVariables: ActionCam
+
+ActionCam.lua
+ActionCam.xml
+
