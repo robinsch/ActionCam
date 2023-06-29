@@ -13,4 +13,4 @@ ESC -> Key Bindings -> ActionCam
 
 ### Updating
 1. Replace Extensions.dll.
-2. Replace ControllerMod folder.
+2. Replace ActionCam folder.
