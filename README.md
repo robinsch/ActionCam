@@ -9,7 +9,7 @@ ActionCam support for World of Warcraft 3.3.5a
 ### Settings
 ESC -> Key Bindings -> ActionCam
 
-![](blob:https://imgur.com/bc03af5d-e362-4694-b3f3-291dc8a7d276)
+![](https://i.gyazo.com/65934fdfc9876d55a88b6018fe48b58f.png))
 
 ### Updating
 1. Replace Extensions.dll.
