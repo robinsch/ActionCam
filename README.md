@@ -1,5 +1,5 @@
-# ActionCam
-ActionCam support for World of Warcraft 3.3.5a
+# Notes
+This is a demo version of ActionCam support for World of Warcraft 3.3.5a. Full version is available on https://ascension.gg.
 
 ### Installation
 1. Move Patcher.exe to WoW folder and run it.
