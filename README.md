@@ -1,5 +1,5 @@
 # Notes
-This is a demo version of ActionCam support for World of Warcraft 3.3.5a.
+This is a demo (free trial) version of ActionCam support for World of Warcraft 3.3.5a.
 
 ### Installation
 1. Move Patcher.exe to WoW folder and run it.
