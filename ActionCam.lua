@@ -84,3 +84,15 @@ function ActionCamOptions_OnEvent(self, event, ...)
 		end
 	end
 end
+
+function ActionCamOptions_Reset()
+	ActionCamOptions_UpdateSettings("AC_CameraAngle", defaults.cameraActionAngle)
+	ActionCamOptions_UpdateSettings("AC_CameraDist", defaults.cameraActionDist)
+	ActionCamOptions_UpdateSettings("AC_CameraZ", defaults.cameraActionZ)
+	ActionCamOptions_UpdateSettings("AC_CameraMaxPitch", defaults.cameraMaxPitch)
+	ActionCamOptions_UpdateSettings("AC_CameraMinPitch", defaults.cameraMinPitch)
+	ActionCamOptions_UpdateSettings("AC_CameraTargetFocusTurnSpeed", defaults.cameraTargetFocusTurnSpeed)
+	SetCVar("cameraActionHeadBobs", "0")
+	SetCVar("cameraTargetFocusInteractEnable", "0")
+	SetCVar("cameraTargetFocusEnemyEnable", "1")
+end

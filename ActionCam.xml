@@ -46,6 +46,22 @@
           </OnLoad>
         </Scripts>
       </CheckButton>
+
+      <Button name="$parentActionCamReset" inherits="UIPanelButtonTemplate" text="Reset">
+        <Size>
+          <AbsDimension x="64" y="22"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentActionCam" relativePoint="TOPRIGHT" x="165" y="0"/>
+        </Anchors>
+        <Scripts>
+          <OnClick>
+            ActionCamOptions_Reset();
+          </OnClick>
+        </Scripts>
+        <NormalFont style="GameFontNormalSmall"/>
+        <HighlightFont style="GameFontHighlightSmall"/>
+      </Button>
       
       <Slider name="$parentActionAngle" inherits="OptionsSliderTemplate">
         <Anchors>
