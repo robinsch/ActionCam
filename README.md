@@ -1,6 +1,8 @@
 # Notes
 ActionCam support for World of Warcraft 3.3.5a.
 
+(https://streamable.com/id2bfc)
+
 ### Installation
 1. Move Patcher.exe to WoW folder and run it.
 2. Move Extensions.dll to WoW folder.
