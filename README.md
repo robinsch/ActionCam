@@ -1,5 +1,5 @@
 # Notes
-This is a demo version of ActionCam support for World of Warcraft 3.3.5a.
+ActionCam support for World of Warcraft 3.3.5a.
 
 ### Installation
 1. Move Patcher.exe to WoW folder and run it.
@@ -7,7 +7,7 @@ This is a demo version of ActionCam support for World of Warcraft 3.3.5a.
 3. Move ActionCam folder to WoW/Interface/Addons folder.
 
 ### Settings
-ESC -> Key Bindings -> ActionCam
+ESC -> Interface -> AddOns -> ActionCam
 
 ![](https://i.gyazo.com/65934fdfc9876d55a88b6018fe48b58f.png)
 
