@@ -3,6 +3,7 @@
 ## Author: robinsch
 ## Notes: ActionCam support for 3.3.5
 ## SavedVariables: ActionCam
+## Secure: 1
 
 ActionCam.lua
 ActionCam.xml
