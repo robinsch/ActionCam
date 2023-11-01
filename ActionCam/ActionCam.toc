@@ -2,7 +2,7 @@
 ## Title: ActionCam
 ## Author: robinsch
 ## Notes: ActionCam support for 3.3.5
-## SavedVariables: ActionCam
+## SavedVariables: ActionCamOptionsDB
 ## Secure: 1
 
 ActionCam.lua

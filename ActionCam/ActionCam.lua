@@ -21,13 +21,6 @@ local defaults = {
     cameraTargetFocusTurnSpeedMax = 16.5,
 }
 
-RegisterCVar("AC_CameraAngle", defaults.cameraActionAngle)
-RegisterCVar("AC_CameraDist", defaults.cameraActionDist)
-RegisterCVar("AC_CameraZ", defaults.cameraActionZ)
-RegisterCVar("AC_CameraMaxPitch", defaults.cameraActionMaxPitch)
-RegisterCVar("AC_CameraMinPitch", defaults.cameraActionMinPitch)
-RegisterCVar("AC_CameraTargetFocusTurnSpeed", defaults.cameraActionMinPitch)
-
 -- @robinsch: Option Panel
 ActionCamPanelOptions = {
     ActionCam = { text = "Enable Action Camera" },
@@ -63,15 +56,15 @@ end
 
 function ActionCamOptions_OnLoad(self)
     self:RegisterEvent("ADDON_LOADED")
-    self.name = addonName;
-    self.options = ActionCamPanelOptions;
+    self.name = addonName
+    self.options = ActionCamPanelOptions
 end
 
 function ActionCamOptions_OnEvent(self, event, ...)
     if event == "ADDON_LOADED" then
         local addon = ...
         if addon == addonName then
-            InterfaceOptionsPanel_OnLoad(self);
+            InterfaceOptionsPanel_OnLoad(self)
 
             ActionCamOptionsDB = ActionCamOptionsDB or {
                 AC_CameraAngle = defaults.cameraActionAngle,
@@ -81,8 +74,26 @@ function ActionCamOptions_OnEvent(self, event, ...)
                 AC_CameraMinPitch = defaults.cameraMinPitch,
                 AC_CameraTargetFocusTurnSpeed = defaults.cameraTargetFocusTurnSpeed,
             }
+
+            ActionCamOptions_Load()
         end
     end
+end
+
+function ActionCamOptions_Load()
+    RegisterCVar("AC_CameraAngle", ActionCamOptionsDB.AC_CameraAngle)
+    RegisterCVar("AC_CameraDist", ActionCamOptionsDB.AC_CameraDist)
+    RegisterCVar("AC_CameraZ", ActionCamOptionsDB.AC_CameraZ)
+    RegisterCVar("AC_CameraMaxPitch", ActionCamOptionsDB.AC_CameraMaxPitch)
+    RegisterCVar("AC_CameraMinPitch", ActionCamOptionsDB.AC_CameraMinPitch)
+    RegisterCVar("AC_CameraTargetFocusTurnSpeed", ActionCamOptionsDB.AC_CameraTargetFocusTurnSpeed)
+
+    ActionCamOptions_UpdateSettings("AC_CameraAngle", ActionCamOptionsDB.AC_CameraAngle)
+    ActionCamOptions_UpdateSettings("AC_CameraDist", ActionCamOptionsDB.AC_CameraDist)
+    ActionCamOptions_UpdateSettings("AC_CameraZ", ActionCamOptionsDB.AC_CameraZ)
+    ActionCamOptions_UpdateSettings("AC_CameraMaxPitch", ActionCamOptionsDB.AC_CameraMaxPitch)
+    ActionCamOptions_UpdateSettings("AC_CameraMinPitch", ActionCamOptionsDB.AC_CameraMinPitch)
+    ActionCamOptions_UpdateSettings("AC_CameraTargetFocusTurnSpeed", ActionCamOptionsDB.AC_CameraTargetFocusTurnSpeed)
 end
 
 function ActionCamOptions_Reset()
@@ -92,6 +103,7 @@ function ActionCamOptions_Reset()
     ActionCamOptions_UpdateSettings("AC_CameraMaxPitch", defaults.cameraMaxPitch)
     ActionCamOptions_UpdateSettings("AC_CameraMinPitch", defaults.cameraMinPitch)
     ActionCamOptions_UpdateSettings("AC_CameraTargetFocusTurnSpeed", defaults.cameraTargetFocusTurnSpeed)
+
     SetCVar("cameraActionHeadBobs", "0")
     SetCVar("cameraTargetFocusInteractEnable", "0")
     SetCVar("cameraTargetFocusEnemyEnable", "1")
